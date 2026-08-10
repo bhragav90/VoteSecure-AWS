@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}VoteSecure — Online Voting Demo{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <span class="eyebrow">AWS-ready Django project</span>
+        <h1>Secure Online Voting <span>Demo</span></h1>
+        <p>Experience a clean voting workflow built for learning cloud deployment, databases, Git and AWS.</p>
+        <div class="actions">
+            <a href="{% url 'vote' %}" class="button primary">Cast Demo Vote</a>
+            <a href="{% url 'results' %}" class="button secondary">View Results</a>
+        </div>
+        <p class="notice">Do not enter real Aadhaar numbers or government IDs. Use dummy data only.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span class="eyebrow">How it works</span>
+        <h2>Simple, transparent workflow</h2>
+    </div>
+    <div class="cards">
+        <article class="card"><div class="icon">01</div><h3>Verify</h3><p>Enter a demo Voter ID or dummy 12-digit ID. The raw value is not stored.</p></article>
+        <article class="card"><div class="icon">02</div><h3>Choose</h3><p>Select one active demo candidate and submit your vote.</p></article>
+        <article class="card"><div class="icon">03</div><h3>Count</h3><p>The database records the vote against a one-way verification hash.</p></article>
+        <article class="card"><div class="icon">04</div><h3>Deploy</h3><p>Run locally, push through GitHub, then deploy Django on AWS EC2 and optionally RDS.</p></article>
+    </div>
+</section>
+{% endblock %}

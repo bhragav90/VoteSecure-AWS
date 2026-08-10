@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}About — VoteSecure{% endblock %}
+{% block content %}
+<section class="page-header">
+    <span class="eyebrow">About the project</span>
+    <h1>VoteSecure</h1>
+    <p>A student-friendly Django project designed to demonstrate web development, database design, security basics, Git/GitHub and AWS deployment.</p>
+</section>
+<section class="section narrow">
+    <div class="info-panel">
+        <h2>Important limitation</h2>
+        <p>This application is not a real election system. It has no government identity integration, no legal election certification, and no guarantee of election-grade security.</p>
+        <p>For classroom testing, use dummy voter IDs and dummy 12-digit values only.</p>
+    </div>
+    <div class="cards">
+        <article class="card"><h3>Security basics</h3><p>CSRF protection, environment secrets, production settings and one-way identifier hashing.</p></article>
+        <article class="card"><h3>Cloud learning</h3><p>Designed for EC2 hosting with optional PostgreSQL on Amazon RDS.</p></article>
+        <article class="card"><h3>Dev workflow</h3><p>Git commits, GitHub source control, CI checks and repeatable deployment steps.</p></article>
+    </div>
+</section>
+{% endblock %}

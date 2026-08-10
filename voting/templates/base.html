@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}VoteSecure{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+<header class="navbar">
+    <a class="brand" href="{% url 'home' %}">VoteSecure</a>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'results' %}">Results</a>
+        <a class="nav-button" href="{% url 'vote' %}">Cast Demo Vote</a>
+    </nav>
+</header>
+
+{% if messages %}
+<div class="container">
+    {% for message in messages %}
+        <div class="message">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer>
+    <p>© 2026 VoteSecure · Educational demo only</p>
+</footer>
+</body>
+</html>

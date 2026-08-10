@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Vote Recorded — VoteSecure{% endblock %}
+{% block content %}
+<section class="success-page">
+    <div class="success-card">
+        <div class="success-icon">✓</div>
+        <span class="eyebrow">Submission complete</span>
+        <h1>Demo vote recorded</h1>
+        <p>Your test vote has been recorded. No raw voter or Aadhaar-style identifier was stored.</p>
+        <div class="actions center">
+            <a href="{% url 'home' %}" class="button primary">Home</a>
+            <a href="{% url 'results' %}" class="button secondary">View Results</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

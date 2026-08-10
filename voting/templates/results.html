@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Results — VoteSecure{% endblock %}
+{% block content %}
+<section class="page-header compact">
+    <span class="eyebrow">Demo results</span>
+    <h1>Vote count</h1>
+    <p>These results are generated from the project's demonstration database.</p>
+</section>
+<section class="section narrow">
+    <div class="total-card"><span>Total demo votes</span><strong>{{ total_votes }}</strong></div>
+    <div class="results-list">
+        {% for candidate in candidates %}
+        <article class="result-row">
+            <div>
+                <strong>{{ candidate.name }}</strong>
+                <span>{{ candidate.party }}</span>
+            </div>
+            <strong class="result-number">{{ candidate.vote_total }}</strong>
+        </article>
+        {% empty %}
+        <div class="info-panel">No candidates have been seeded yet. Run <code>python manage.py seed_candidates</code>.</div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

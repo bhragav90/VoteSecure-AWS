@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cast Demo Vote — VoteSecure{% endblock %}
+{% block content %}
+<section class="page-header compact">
+    <span class="eyebrow">Demo election</span>
+    <h1>Cast your vote</h1>
+    <p>Use dummy credentials only. Your entered verification value is hashed before it is stored.</p>
+</section>
+
+<div class="form-shell">
+    <div class="warning">
+        <strong>Demo only:</strong> Never enter a real Aadhaar number or government ID into this project.
+    </div>
+
+    {% if form.non_field_errors %}
+        <div class="error">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="field-grid">
+            <div class="field">
+                <label for="{{ form.voter_id.id_for_label }}">Voter ID</label>
+                {{ form.voter_id }}
+                {% for error in form.voter_id.errors %}<small class="error-text">{{ error }}</small>{% endfor %}
+            </div>
+            <div class="field">
+                <label for="{{ form.aadhaar_id.id_for_label }}">Aadhaar / Demo ID</label>
+                {{ form.aadhaar_id }}
+                {% for error in form.aadhaar_id.errors %}<small class="error-text">{{ error }}</small>{% endfor %}
+            </div>
+        </div>
+
+        <h2 class="form-title">Choose a candidate</h2>
+        <div class="candidate-grid">
+            {% for radio in form.candidate %}
+            <label class="candidate-card">
+                {{ radio.tag }}
+                <span class="candidate-image">
+                    {% if radio.choice_label.image %}
+                        <img src="{% static radio.choice_label.image %}" alt="{{ radio.choice_label.name }}">
+                    {% endif %}
+                </span>
+                <span>
+                    <strong>{{ radio.choice_label.name }}</strong>
+                    <small>{{ radio.choice_label.party }}</small>
+                </span>
+            </label>
+            {% endfor %}
+        </div>
+        {% for error in form.candidate.errors %}<small class="error-text">{{ error }}</small>{% endfor %}
+
+        <button class="button primary full" type="submit">Submit Demo Vote</button>
+    </form>
+</div>
+{% endblock %}
