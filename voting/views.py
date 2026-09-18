@@ -19,8 +19,11 @@ def about(request):
 
 
 def vote(request):
+    candidates = Candidate.objects.filter(active=True)
+
     if request.method == "POST":
         form = VoteForm(request.POST)
+
         if form.is_valid():
             digest = verification_hash(form.cleaned_data["verification_value"])
             candidate = form.cleaned_data["candidate"]
@@ -40,8 +43,14 @@ def vote(request):
     else:
         form = VoteForm()
 
-    return render(request, "vote.html", {"form": form})
-
+    return render(
+        request,
+        "vote.html",
+        {
+            "form": form,
+            "candidates": candidates,
+        },
+    )
 
 def success(request):
     return render(request, "s.html")
